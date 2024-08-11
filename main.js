@@ -2,6 +2,15 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
     const main = document.getElementById("toast");
     if (main) {
         const toast = document.createElement("div");
+
+        toast.onclick = function (e) {
+            // console.log(e.target);
+
+            if (e.target.closest(".toast__close")) {
+                main.removeChild(toast);
+            }
+        };
+
         const icons = {
             success: "fa-solid fa-circle-check",
             info: "fa-solid fa-circle-info",
